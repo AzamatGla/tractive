@@ -1,0 +1,18 @@
+{"data": [ 
+	{"name": "ami", "salary": 56000, "gender": "female", "married": true, "avatar": "https://www.groupe-e.fr/wp-content/uploads/2019/04/avataaars-2-1-283x300.png" },
+	{"name": "abi", "salary": 16000, "gender": "male", "married": false, "avatar": "https://goticradio.files.wordpress.com/2017/11/avataaars.png?w=264" },
+	{"name": "babi", "salary": 52000, "gender": "male", "married": false, "avatar": "https://goticradio.files.wordpress.com/2017/11/avataaars.png?w=264" },
+	{"name": "bahi", "salary": 33000, "gender": "male", "married": true, "avatar": "https://goticradio.files.wordpress.com/2017/11/avataaars.png?w=264" },
+	{"name": "ami", "salary": 6000, "gender": "male", "married": false, "avatar": "https://goticradio.files.wordpress.com/2017/11/avataaars.png?w=264" },
+	{"name": "dato", "salary": 5000, "gender": "male", "married": false, "avatar": "https://goticradio.files.wordpress.com/2017/11/avataaars.png?w=264" },
+	{"name": "dady", "salary": 39000, "gender": "male", "married": true, "avatar": "https://goticradio.files.wordpress.com/2017/11/avataaars.png?w=264" },
+	{"name": "hony", "salary": 73000, "gender": "female", "married": false, "avatar": "https://www.groupe-e.fr/wp-content/uploads/2019/04/avataaars-2-1-283x300.png" },
+	{"name": "hos", "salary": 22000, "gender": "male", "married": false, "avatar": "https://goticradio.files.wordpress.com/2017/11/avataaars.png?w=264" },
+	{"name": "chos", "salary": 11000, "gender": "male", "married": false, "avatar": "https://goticradio.files.wordpress.com/2017/11/avataaars.png?w=264" },
+	{"name": "mami", "salary": 90000, "gender": "female", "married": true, "avatar": "https://www.groupe-e.fr/wp-content/uploads/2019/04/avataaars-2-1-283x300.png" },
+	{"name": "nani", "salary": 34000, "gender": "female", "married": true, "avatar": "https://www.groupe-e.fr/wp-content/uploads/2019/04/avataaars-2-1-283x300.png" },
+	{"name": "sali", "salary": 66000, "gender": "female", "married": true, "avatar": "https://www.groupe-e.fr/wp-content/uploads/2019/04/avataaars-2-1-283x300.png" },
+	{"name": "sasa", "salary": 76000, "gender": "female", "married": false, "avatar": "https://www.groupe-e.fr/wp-content/uploads/2019/04/avataaars-2-1-283x300.png" },
+	{"name": "sara", "salary": 55000, "gender": "female", "married": false, "avatar": "https://www.groupe-e.fr/wp-content/uploads/2019/04/avataaars-2-1-283x300.png" }
+]
+}
