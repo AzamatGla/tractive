@@ -1,5 +1,6 @@
 
 let updateRow = null;
+var numberOfColoumns = document.getElementById('myTable').rows[0].cells.length;
 
 function createRowFunction() {
 	var myTable = document.getElementById("myTable");
@@ -7,23 +8,25 @@ function createRowFunction() {
 
 	submitNewRowFunction();
 	updateRow = row.rowIndex;
+	for (var i = 0; i<numberOfColoumns+2; i++){
+		if (i<numberOfColoumns) {
+			var cell = row.insertCell(i);
+			cell.innerHTML = "<input type='text' class='form-input'>";
+		}
+		else {
+			if (i === numberOfColoumns) {
+				var cell6 = row.insertCell(numberOfColoumns);
+				cell6.style.borderWidth = 0;
+				cell6.innerHTML = "<button class='btn btn-block' onclick='myDeleteFunction(this)'>delete</button>";
+			}
+			if (i === numberOfColoumns +1) {
+				var cell7 = row.insertCell(numberOfColoumns+1);
+				cell7.style.borderWidth = 0;
+				cell7.innerHTML = "<button class='btn btn-submit' onclick='submitRowFunction(this)' style='display:block;' id='submitBtn'>submit</button><button class='btn btn-update' id='updateBtn' onclick='updateRowFunction(this)' style='display:none;'>update</button>";
+			}
+		}
+	}
 	
-	var cell1 = row.insertCell(0);
-	cell1.innerHTML = "<input type='text' class='form-input'>";
-	var cell2 = row.insertCell(1);
-	cell2.innerHTML = "<input type='text' class='form-input'>";
-	var cell3 = row.insertCell(2);
-	cell3.innerHTML = "<input type='text' class='form-input'>";
-	var cell4 = row.insertCell(3);
-	cell4.innerHTML = "<input type='text' class='form-input'>";
-	var cell5 = row.insertCell(4);
-	cell5.innerHTML = "<input type='text' class='form-input'>";
-	var cell6 = row.insertCell(5);
-	cell6.style.borderWidth = 0;
-	cell6.innerHTML = "<button class='btn btn-block' onclick='myDeleteFunction(this)'>delete</button>";
-	var cell7 = row.insertCell(6);
-	cell7.style.borderWidth = 0;
-	cell7.innerHTML = "<button class='btn btn-submit' onclick='submitRowFunction(this)' style='display:block;' id='submitBtn'>submit</button><button class='btn btn-update' id='updateBtn' onclick='updateRowFunction(this)' style='display:none;'>update</button>";
 }
 
 function submitNewRowFunction() {
@@ -37,10 +40,10 @@ function submitNewRowFunction() {
 			inputs[i].readOnly = true;
 		}
 		for (let i = 0; i<submitButton.length; i++){
-		submitButton[i].style.display = "none";
-		updateButton[i].style.display = "block";
+			submitButton[i].style.display = "none";
+			updateButton[i].style.display = "block";
+		}
 	}
-}
 }
 
 function submitRowFunction(td) {
@@ -54,33 +57,35 @@ function submitRowFunction(td) {
 			inputs[i].readOnly = true;
 		}
 		for (let i = 0; i<submitButton.length; i++){
-		submitButton[i].style.display = "none";
-		updateButton[i].style.display = "block";
+			submitButton[i].style.display = "none";
+			updateButton[i].style.display = "block";
+		}
 	}
 }
-}
+
+
 function updateRowFunction(td) {
 
 	var myTable = document.getElementById("myTable");
-		let currentRowIndex = td.parentElement.parentElement.rowIndex
-		console.log(currentRowIndex)
-		let inputs = myTable.rows.item(currentRowIndex).getElementsByTagName("input");
-		let submitButton = myTable.rows.item(currentRowIndex).getElementsByClassName("btn btn-submit");
-		let updateButton = myTable.rows.item(currentRowIndex).getElementsByClassName("btn btn-update");
+	let currentRowIndex = td.parentElement.parentElement.rowIndex
+	console.log(currentRowIndex)
+	let inputs = myTable.rows.item(currentRowIndex).getElementsByTagName("input");
+	let submitButton = myTable.rows.item(currentRowIndex).getElementsByClassName("btn btn-submit");
+	let updateButton = myTable.rows.item(currentRowIndex).getElementsByClassName("btn btn-update");
 
-		console.log(inputs.length)
-		for(let i = 0; i < inputs.length; i++) {
-			inputs[i].readOnly = false;
-		}
+	console.log(inputs.length)
+	for(let i = 0; i < inputs.length; i++) {
+		inputs[i].readOnly = false;
+	}
 
 
 
-		for (let i = 0; i<submitButton.length; i++){
-			
+	for (let i = 0; i<submitButton.length; i++){
+
 		submitButton[i].style.display = "block";
 		updateButton[i].style.display = "none";
 	}
-	}
+}
 
 
 function myDeleteFunction(td) {
@@ -92,7 +97,9 @@ function myDeleteFunction(td) {
 	}
 }
 
+
 document.getElementById('fileImport').addEventListener('change', readFileAsString);
+
 function readFileAsString() {
 	updateRow = 0
 	var files = this.files;
@@ -108,27 +115,38 @@ function readFileAsString() {
 		var data = response.data;
 		for (let i = 0; i < data.length; i++) {
 			var row = table.insertRow(table.rows.length);
-			var cell1 = row.insertCell(0);
-			cell1.innerHTML = "<input type='text' class='form-input' value="+String(data[i].name)+" readonly>";
-			var cell2 = row.insertCell(1);
-			cell2.innerHTML = "<input type='text' class='form-input' value="+ String(data[i].salary)+" readonly>";
-			var cell3 = row.insertCell(2);
-			cell3.innerHTML = "<input type='text' class='form-input' value="+ String(data[i].gender)+" readonly>";
-			var cell4 = row.insertCell(3);
-			cell4.innerHTML = "<input type='text' class='form-input' value="+ String(data[i].married)+" readonly>";
-			var cell5 = row.insertCell(4);
-			cell5.innerHTML = "<input type='text' class='form-input' value="+ String(data[i].avatar)+" readonly>";
-			var cell6 = row.insertCell(5);
-			cell6.style.borderWidth = 0;
-			cell6.innerHTML = "<button class='btn btn-block' onclick='myDeleteFunction(this)'>delete</button>";
-			var cell7 = row.insertCell(6);
-			cell7.style.borderWidth = 0;
-			cell7.innerHTML = "<button class='btn btn-submit' onclick='submitRowFunction(this)' style='display:none;'>submit</button><button class='btn btn-update' onclick='updateRowFunction(this)' style='display:block;'>update</button>";
-
+			valueOfFile = Object.values(data[i])
+			for (let k = 0; k<numberOfColoumns+2; k++) {
+				if (k<numberOfColoumns) {
+				var cell = row.insertCell(k);
+				if (String(valueOfFile[k]).startsWith("http")){
+					cell.innerHTML = "<input type='image' src="+ String(data[i].avatar)+" width='35' height='35' readonly>";
+				}
+				else {
+					cell.innerHTML = "<input type='text' class='form-input' value="+String(valueOfFile[k])+" readonly>";
+				}
+			}
+			else {
+			if (k === numberOfColoumns) {
+				var cell6 = row.insertCell(numberOfColoumns);
+				cell6.style.borderWidth = 0;
+				cell6.innerHTML = "<button class='btn btn-block' onclick='myDeleteFunction(this)'>delete</button>";
+			}
+			if (k === numberOfColoumns +1) {
+				var cell7 = row.insertCell(numberOfColoumns+1);
+				cell7.style.borderWidth = 0;
+				cell7.innerHTML = "<button class='btn btn-submit' onclick='submitRowFunction(this)' style='display:none;' id='submitBtn'>submit</button><button class='btn btn-update' id='updateBtn' onclick='updateRowFunction(this)' style='display:block;'>update</button>";
+			}
+		}
+			}
+			
 			updateRow += 1
+
+			document.getElementById("fileImport").value = "";
 
 		}
 	};
 	reader.readAsText(files[0]);
 }
+
 
