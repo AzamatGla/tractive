@@ -1,9 +1,11 @@
 
 let updateRow = null;
 var numberOfColoumns = document.getElementById('myTable').rows[0].cells.length;
+var myTable = document.getElementById("myTable");
+
 
 function createRowFunction() {
-	var myTable = document.getElementById("myTable");
+	
 	var row = myTable.insertRow(myTable.rows.length);
 
 	submitNewRowFunction();
@@ -30,8 +32,6 @@ function createRowFunction() {
 }
 
 function submitNewRowFunction() {
-	var myTable = document.getElementById("myTable");
-	console.log(updateRow)
 	if (updateRow) {
 		let inputs = myTable.rows.item(updateRow).getElementsByTagName("input");
 		let submitButton = myTable.rows.item(updateRow).getElementsByClassName("btn btn-submit");
@@ -47,9 +47,8 @@ function submitNewRowFunction() {
 }
 
 function submitRowFunction(td) {
-	var myTable = document.getElementById("myTable");
 	if (updateRow) {
-		let currentRowIndex = td.parentElement.parentElement.rowIndex
+		let currentRowIndex = td.parentElement.parentElement.rowIndex;
 		let inputs = myTable.rows.item(currentRowIndex).getElementsByTagName("input");
 		let submitButton = myTable.rows.item(currentRowIndex).getElementsByClassName("btn btn-submit");
 		let updateButton = myTable.rows.item(currentRowIndex).getElementsByClassName("btn btn-update");
@@ -65,17 +64,20 @@ function submitRowFunction(td) {
 
 
 function updateRowFunction(td) {
-
-	var myTable = document.getElementById("myTable");
-	let currentRowIndex = td.parentElement.parentElement.rowIndex
-	console.log(currentRowIndex)
+	let currentRowIndex = td.parentElement.parentElement.rowIndex;
 	let inputs = myTable.rows.item(currentRowIndex).getElementsByTagName("input");
+	let image = myTable.rows.item(currentRowIndex).getElementsByTagName("input");
 	let submitButton = myTable.rows.item(currentRowIndex).getElementsByClassName("btn btn-submit");
 	let updateButton = myTable.rows.item(currentRowIndex).getElementsByClassName("btn btn-update");
 
-	console.log(inputs.length)
 	for(let i = 0; i < inputs.length; i++) {
+		if (inputs) {
 		inputs[i].readOnly = false;
+		}
+		else if (image) {
+			image[i].readOnly = false;
+		}
+
 	}
 
 
@@ -89,8 +91,7 @@ function updateRowFunction(td) {
 
 
 function myDeleteFunction(td) {
-	var table = document.getElementById("myTable");
-	if (table.rows.length > 1) {
+	if (myTable.rows.length > 1) {
 		var item = td.parentElement.parentElement;
 		updateRow -= 1;
 		table.deleteRow(item.rowIndex);
@@ -101,7 +102,7 @@ function myDeleteFunction(td) {
 document.getElementById('fileImport').addEventListener('change', readFileAsString);
 
 function readFileAsString() {
-	updateRow = 0
+	updateRow = 0;
 	var files = this.files;
 	var table = document.getElementById("myTable");
 	if (files.length === 0) {
@@ -115,7 +116,7 @@ function readFileAsString() {
 		var data = response.data;
 		for (let i = 0; i < data.length; i++) {
 			var row = table.insertRow(table.rows.length);
-			valueOfFile = Object.values(data[i])
+			valueOfFile = Object.values(data[i]);
 			for (let k = 0; k<numberOfColoumns+2; k++) {
 				if (k<numberOfColoumns) {
 				var cell = row.insertCell(k);
@@ -140,7 +141,7 @@ function readFileAsString() {
 		}
 			}
 			
-			updateRow += 1
+			updateRow += 1;
 
 			document.getElementById("fileImport").value = "";
 
